@@ -1,0 +1,20 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch main.py",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "program": "main.py",
+            "env": {
+                "KAFKA_BOOTSTRAP_SERVERS": "localhost:9092,localhost:9093,localhost:9094",
+                "KAFKA_SASL_USERNAME": "username",
+                "KAFKA_SASL_PASSWORD": "password"
+            }
+        }
+    ]
+}
