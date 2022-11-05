@@ -5,11 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch main.py",
+            "name": "Launch comsumer",
             "type": "python",
             "request": "launch",
             "cwd": "${workspaceFolder}/src",
-            "program": "main.py",
+            "program": "comsumer.py",
+            "env": {
+                "KAFKA_BOOTSTRAP_SERVERS": "localhost:9092,localhost:9093,localhost:9094",
+                "KAFKA_SASL_USERNAME": "username",
+                "KAFKA_SASL_PASSWORD": "password"
+            }
+        },
+        {
+            "name": "Launch producer",
+            "type": "python",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/src",
+            "program": "producer.py",
             "env": {
                 "KAFKA_BOOTSTRAP_SERVERS": "localhost:9092,localhost:9093,localhost:9094",
                 "KAFKA_SASL_USERNAME": "username",
