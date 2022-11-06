@@ -5,9 +5,11 @@ import multiprocessing
 import os
 import random
 import reactivex as rx
+import time
 from reactivex.scheduler import ThreadPoolScheduler
 from reactivex import operators as ops
-import time
+from threading import current_thread
+
 
 BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", 'localhost:9092,localhost:9093,localhost:9094').split(",") 
 TOPIC_NAME = 'my_favorite_topic'
@@ -41,7 +43,7 @@ def main():
       rx.just(msg).pipe(
         ops.map(lambda s: intense_calculation(s)), ops.subscribe_on(pool_scheduler)
       ).subscribe(
-        on_next = lambda i: print("Message Received: {0}".format(i)),
+        on_next = lambda i: print("PROCESS : {0}, Message Received : {1}".format(current_thread().name, i)),
         on_error = lambda e: print("Error : {0}".format(e)),
         on_completed = lambda: print("Job Done!"),
       )
